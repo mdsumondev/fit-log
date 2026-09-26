@@ -16,7 +16,7 @@ const Hero = () => {
           today's plan, and watch the week's work add up.
         </p>
         <Link
-          href="/my-plan"
+          href="#library"
           className="bg-[#c2f800FF] font-bold text-xs mx-auto px-[28px] py-[18px] text-center block lg:inline-block rounded-md"
         >
           BROWSE WORKOUTS

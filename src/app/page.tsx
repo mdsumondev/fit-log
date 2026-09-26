@@ -24,7 +24,10 @@ export default async function Home() {
         <Hero />
       </section>
 
-      <section className="container mx-auto mt-[64px] lg:px-0 px-4">
+      <section
+        id="library"
+        className="container mx-auto mt-[64px] lg:px-0 px-4"
+      >
         <div className="mb-[32px]">
           <h2 className="text-3xl font-bold text-white mb-1">THE LIBRARY</h2>
           <p className="text-sm text-[#9ca3afFF]">

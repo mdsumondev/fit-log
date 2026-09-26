@@ -13,7 +13,7 @@ const TodayPlan = ({ planExercise }) => {
 
     if (!alreadyAdded) {
       setAddPlan([...addPlan, planExercise]);
-      toast.success(`${planExercise.name} added successfully`);
+      toast.success(`Added to today's plan`);
     } else {
       toast.error(`${planExercise.name} already added your plan`);
     }
