@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Oswald } from "next/font/google";
+import { ToastContainer } from "react-toastify";
 import Header from "./Components/Header";
+import ExerciseContext from "./Context/ExerciseContext";
 import "./globals.css";
 
 const oswald = Oswald({
@@ -24,8 +26,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body
         className={`${inter.variable} ${oswald.variable} min-h-full flex flex-col bg-[#0C0E11]`}
       >
-        <Header />
-        <div>{children}</div>
+        <ExerciseContext>
+          <ToastContainer />
+          <Header />
+          <div>{children}</div>
+        </ExerciseContext>
       </body>
     </html>
   );

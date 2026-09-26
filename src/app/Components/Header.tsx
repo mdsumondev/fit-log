@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
+import { exerciseContextProvider } from "../Context/ExerciseContext";
 
 const Header = () => {
+  const { addPlan } = useContext(exerciseContextProvider);
   const [open, setOpen] = useState(false);
 
   const handleHamburger = () => {
@@ -50,7 +52,7 @@ const Header = () => {
             <span className="text-base text-[#d1d5db] font-medium">Plan</span>
 
             <span className="bg-[#c2f800] text-base rounded-full flex justify-center items-center w-6 h-6">
-              0
+              {addPlan.length}
             </span>
           </Link>
 
