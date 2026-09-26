@@ -4,9 +4,15 @@ import Hero from "./Components/Home/Hero";
 import { ExerciseType } from "./Type/exerciseType";
 
 const exercise = async (): Promise<ExerciseType[]> => {
-  const res = await fetch("https://api.abcz.workers.dev/api/fitlog");
+  try {
+    const res = await fetch("https://api.abcz.workers.dev/api/fitlog", {
+      next: { revalidate: 120 },
+    });
 
-  return res.json();
+    return res.json();
+  } catch (error) {
+    throw new Error("Data not found");
+  }
 };
 
 export default async function Home() {
