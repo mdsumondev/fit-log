@@ -2,7 +2,7 @@
 
 import { useContext, useState } from "react";
 import Calcualtion from "../Components/MyPlan/Calcualtion";
-import SavedPlan from "../Components/MyPlan/SavedPlan";
+import SavedPlanTab from "../Components/MyPlan/SavedPlan";
 import TodayPlan from "../Components/MyPlan/TodayPlan";
 import { exerciseContextProvider } from "../Context/ExerciseContext";
 
@@ -82,7 +82,7 @@ const MayPlanPage = () => {
           </div>
         </div>
 
-        {activeTab === "Today’s Plan" ? <TodayPlan /> : <SavedPlan />}
+        {activeTab === "Today’s Plan" ? <TodayPlan /> : <SavedPlanTab />}
       </section>
     </div>
   );

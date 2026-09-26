@@ -2,7 +2,13 @@ import { ExerciseType } from "@/app/Type/exerciseType";
 import Image from "next/image";
 import Link from "next/link";
 
-const PlanCard = ({ item }: { item: ExerciseType }) => {
+const PlanCard = ({
+  item,
+  visivility,
+}: {
+  item: ExerciseType;
+  visivility: string;
+}) => {
   const { image, name, duration, caloriesBurned, equipment, rating, id } = item;
 
   return (
@@ -69,7 +75,9 @@ const PlanCard = ({ item }: { item: ExerciseType }) => {
             View Details
           </button>
         </Link>
-        <button className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-[#ccff00] text-black font-extrabold text-sm hover:bg-lime-400 transition shadow-lg">
+        <button
+          className={`w-full ${visivility} sm:w-auto px-6 py-2.5 rounded-full bg-[#ccff00] text-black font-extrabold text-sm hover:bg-lime-400 transition shadow-lg`}
+        >
           Mark as Done
         </button>
       </div>
