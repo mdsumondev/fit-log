@@ -7,7 +7,7 @@ import { FaXmark } from "react-icons/fa6";
 import { exerciseContextProvider } from "../Context/ExerciseContext";
 
 const Header = () => {
-  const { addPlan } = useContext(exerciseContextProvider);
+  const { addPlan, savePlan } = useContext(exerciseContextProvider);
   const [open, setOpen] = useState(false);
 
   const handleHamburger = () => {
@@ -57,10 +57,10 @@ const Header = () => {
           </Link>
 
           <Link href="/my-plan" className="flex items-center gap-2">
-            <span className="text-base text-[#d1d5db] font-medium">Plan</span>
+            <span className="text-base text-[#d1d5db] font-medium">Saved</span>
 
             <span className="border border-[#d1d5db] text-[#d1d5db] text-base rounded-full flex justify-center items-center w-6 h-6">
-              0
+              {savePlan.length}
             </span>
           </Link>
         </div>
@@ -89,15 +89,15 @@ const Header = () => {
               <span className="text-sm text-[#d1d5db] font-medium">Plan</span>
 
               <span className="bg-[#c2f800] text-sm rounded-full flex justify-center items-center w-6 h-6">
-                0
+                {addPlan.length}
               </span>
             </Link>
 
             <Link href="/my-plan" className="flex items-center gap-1">
-              <span className="text-sm text-[#d1d5db] font-medium">Plan</span>
+              <span className="text-sm text-[#d1d5db] font-medium">Saved</span>
 
               <span className="border border-[#d1d5db] text-[#d1d5db] text-sm rounded-full flex justify-center items-center w-6 h-6">
-                0
+                {savePlan.length}
               </span>
             </Link>
           </div>

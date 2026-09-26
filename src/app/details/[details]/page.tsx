@@ -136,7 +136,7 @@ const DetailsPage = async ({
         </div>
         <div className="callToAction group mt-9 flex lg:gap-5 gap-2">
           <TodayPlan planExercise={exerciseDetails} />
-          <SaveForLater />
+          <SaveForLater saveExercise={exerciseDetails} />
         </div>
       </div>
     </div>
