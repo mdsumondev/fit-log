@@ -3,11 +3,19 @@
 import { exerciseContextProvider } from "@/app/Context/ExerciseContext";
 import { ExerciseType } from "@/app/Type/exerciseType";
 import { Suspense, useContext } from "react";
+import { toast } from "react-toastify";
 import MayPlanBlank from "./MyPlanBlank";
 import PlanCard from "./PlanCard";
 
 const TodayPlan = () => {
-  const { addPlan } = useContext(exerciseContextProvider);
+  const { addPlan, setAddPlan } = useContext(exerciseContextProvider);
+
+  const handleRemoveItem = ({ id }: { id: number }) => {
+    const updatedPlan = addPlan.filter((item) => item.id !== id);
+
+    setAddPlan(updatedPlan);
+    toast.error("Item removeds");
+  };
 
   return (
     <div>
@@ -19,8 +27,13 @@ const TodayPlan = () => {
         }
       >
         {addPlan.length > 0 ? (
-          addPlan.map((item: ExerciseType, index: number) => (
-            <PlanCard key={index} visivility="inline-block" item={item} />
+          addPlan.map((item: ExerciseType) => (
+            <PlanCard
+              key={item.id}
+              visivility="inline-block"
+              item={item}
+              handleRemoveItem={handleRemoveItem}
+            />
           ))
         ) : (
           <MayPlanBlank />
