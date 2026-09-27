@@ -3,12 +3,12 @@
 import { useContext, useState } from "react";
 import Calcualtion from "../Components/MyPlan/Calcualtion";
 import SavedPlanTab from "../Components/MyPlan/SavedPlan";
+import SortPlanItem from "../Components/MyPlan/SortPlanItem";
 import TodayPlan from "../Components/MyPlan/TodayPlan";
 import { exerciseContextProvider } from "../Context/ExerciseContext";
 
 const MayPlanPage = () => {
   const [activeTab, setActiveTab] = useState("Today’s Plan");
-  const [sortBy, setSortBy] = useState("Duration");
 
   const { addPlan, savePlan } = useContext(exerciseContextProvider);
 
@@ -66,20 +66,7 @@ const MayPlanPage = () => {
             </div>
           </div>
 
-          <div className="flex items-center space-x-3">
-            <span className="text-[#8e9aae] text-sm">Sort By</span>
-
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-              className="bg-[#131924] border border-[#273042] rounded-xl px-4 py-2 text-white text-sm font-bold outline-none cursor-pointer"
-            >
-              <option value="Duration">Duration</option>
-              <option value="Difficulty">Difficulty</option>
-              <option value="Name">Name</option>
-              <option value="Rating">Rating</option>
-            </select>
-          </div>
+          <SortPlanItem />
         </div>
 
         {activeTab === "Today’s Plan" ? <TodayPlan /> : <SavedPlanTab />}

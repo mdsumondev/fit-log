@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
 import ExerciseContext from "./Context/ExerciseContext";
+import SortPlan from "./Context/SortPlan";
 import "./globals.css";
 
 const oswald = Oswald({
@@ -27,12 +28,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body
         className={`${inter.variable} ${oswald.variable} min-h-full flex flex-col bg-[#0C0E11]`}
       >
-        <ExerciseContext>
-          <ToastContainer />
-          <Header />
-          <div>{children}</div>
-          <Footer />
-        </ExerciseContext>
+        <SortPlan>
+          <ExerciseContext>
+            <ToastContainer />
+            <Header />
+            <div>{children}</div>
+            <Footer />
+          </ExerciseContext>
+        </SortPlan>
       </body>
     </html>
   );
