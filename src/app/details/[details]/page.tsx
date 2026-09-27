@@ -163,8 +163,8 @@ const DetailsPage = async ({
           </ol>
         </div>
         <div className="callToAction group mt-9 flex lg:gap-5 gap-2">
-          <TodayPlan planExercise={exerciseDetails} />
-          <SaveForLater saveExercise={exerciseDetails} />
+          <TodayPlan planExercise={resolvedExercise} />
+          <SaveForLater saveExercise={resolvedExercise} />
         </div>
       </div>
     </div>
