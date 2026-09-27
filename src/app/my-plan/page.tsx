@@ -17,7 +17,7 @@ const MayPlanPage = () => {
   };
 
   return (
-    <div>
+    <div className="px-3 lg:px-0">
       <section className="container mx-auto">
         <Calcualtion
           activeTabDatas={activeTab === "Today’s Plan" ? addPlan : savePlan}
@@ -25,8 +25,8 @@ const MayPlanPage = () => {
       </section>
 
       <section className="container mx-auto">
-        <div className="flex mb-6 items-center justify-between w-full p-3 text-white">
-          <div className="flex items-center bg-[#131924] border border-[#273042] p-1 rounded-2xl">
+        <div className="flex mb-6 items-center justify-between w-full p-3 text-white flex-wrap">
+          <div className="flex items-center bg-[#131924] border border-[#273042] p-1 rounded-2xl lg:w-auto w-screen lg:mb-0 mb-3 ">
             <div className="flex items-center gap-1">
               <label
                 className={`px-4 py-2 rounded-xl cursor-pointer text-sm font-medium transition-colors ${
