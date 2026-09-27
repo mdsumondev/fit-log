@@ -1,11 +1,12 @@
 "use client";
 
 import { exerciseContextProvider } from "@/app/Context/ExerciseContext";
+import { ExerciseType } from "@/app/Type/exerciseType";
 import { useContext } from "react";
 import { CiBookmark } from "react-icons/ci";
 import { toast } from "react-toastify";
 
-const SaveForLater = ({ saveExercise }) => {
+const SaveForLater = ({ saveExercise }: { saveExercise: ExerciseType }) => {
   const { savePlan, setSavePlans } = useContext(exerciseContextProvider);
 
   const handleSavePlan = () => {

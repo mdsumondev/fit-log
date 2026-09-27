@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useContext, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
@@ -9,6 +10,7 @@ import { exerciseContextProvider } from "../Context/ExerciseContext";
 const Header = () => {
   const { addPlan, savePlan } = useContext(exerciseContextProvider);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   const handleHamburger = () => {
     setOpen(!open);
@@ -19,7 +21,11 @@ const Header = () => {
       <li className="mb-2 lg:mb-0">
         <Link
           href="/"
-          className="text-base text-[#9ca3af] font-medium px-4 py-1.5"
+          className={`text-base font-medium px-4 py-1.5 rounded-md ${
+            pathname === "/"
+              ? "bg-[#1a2312FF] text-[#c2f800]"
+              : "text-[#9ca3af]"
+          }`}
         >
           Workouts
         </Link>
@@ -28,7 +34,11 @@ const Header = () => {
       <li>
         <Link
           href="/my-plan"
-          className="text-base text-[#9ca3af] font-medium px-4 py-1.5"
+          className={`text-base font-medium px-4 py-1.5 rounded-md ${
+            pathname === "/my-plan"
+              ? "bg-[#1a2312FF] text-[#c2f800]"
+              : "text-[#9ca3af]"
+          }`}
         >
           My Plan
         </Link>
@@ -104,7 +114,9 @@ const Header = () => {
         </div>
 
         <ul
-          className={`bg-[#0c0d10F2] absolute w-full top-[80px] py-10 ${open ? "left-0" : "-left-[100%]"}  transition-all transition-all`}
+          className={`bg-[#0c0d10F2] absolute w-full top-[80px] py-10 ${
+            open ? "left-0" : "-left-[100%]"
+          } transition-all`}
         >
           {link}
         </ul>

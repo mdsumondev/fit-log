@@ -3,14 +3,19 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { ExerciseType } from "../Type/exerciseType";
 
-interface Actions {
+export interface Actions {
   addPlan: ExerciseType[];
   setAddPlan: React.Dispatch<React.SetStateAction<ExerciseType[]>>;
   savePlan: ExerciseType[];
   setSavePlans: React.Dispatch<React.SetStateAction<ExerciseType[]>>;
 }
 
-export const exerciseContextProvider = createContext<Actions | null>(null);
+export const exerciseContextProvider = createContext<Actions>({
+  addPlan: [],
+  setAddPlan: () => undefined,
+  savePlan: [],
+  setSavePlans: () => undefined,
+});
 
 const ExerciseContext = ({ children }: { children: ReactNode }) => {
   const [addPlan, setAddPlan] = useState<ExerciseType[]>([]);

@@ -1,17 +1,23 @@
 import { Suspense } from "react";
 import FitCard from "./Components/Home/FitCard";
 import Hero from "./Components/Home/Hero";
+import { EXERCISE_FALLBACK } from "./data/exerciseData";
 import { ExerciseType } from "./Type/exerciseType";
 
 const exercise = async (): Promise<ExerciseType[]> => {
   try {
-    const res = await fetch("https://api.abcz.workers.dev/api/fitlog", {
+    const res = await fetch("https://api.api-store.workers.dev/api/fitlog", {
       next: { revalidate: 120 },
     });
 
-    return res.json();
+    if (!res.ok) {
+      return EXERCISE_FALLBACK;
+    }
+
+    const data = await res.json();
+    return Array.isArray(data) && data.length > 0 ? data : EXERCISE_FALLBACK;
   } catch (error) {
-    throw new Error("Data not found");
+    return EXERCISE_FALLBACK;
   }
 };
 

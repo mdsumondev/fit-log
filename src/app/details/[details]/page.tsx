@@ -1,14 +1,28 @@
 import SaveForLater from "@/app/Components/Details/SaveForLater";
 import TodayPlan from "@/app/Components/Details/TodayPlan";
+import {
+  EXERCISE_FALLBACK,
+  getFallbackExerciseById,
+} from "@/app/data/exerciseData";
 import { ExerciseType } from "@/app/Type/exerciseType";
 import Image from "next/image";
 
 export const generateStaticParams = async () => {
-  const res = await fetch("https://api.abcz.workers.dev/api/fitlog");
+  try {
+    const res = await fetch("https://api.api-store.workers.dev/api/fitlog");
 
-  const data = await res.json();
+    if (!res.ok) {
+      return EXERCISE_FALLBACK.map((detail) => ({ details: `${detail.id}` }));
+    }
 
-  return data.map((detail: ExerciseType) => ({ details: `${detail.id}` }));
+    const data = await res.json();
+
+    return Array.isArray(data) && data.length > 0
+      ? data.map((detail: ExerciseType) => ({ details: `${detail.id}` }))
+      : EXERCISE_FALLBACK.map((detail) => ({ details: `${detail.id}` }));
+  } catch (error) {
+    return EXERCISE_FALLBACK.map((detail) => ({ details: `${detail.id}` }));
+  }
 };
 
 const DetailsPage = async ({
@@ -18,8 +32,22 @@ const DetailsPage = async ({
 }) => {
   const { details } = await params;
 
-  const res = await fetch(`https://api.abcz.workers.dev/api/fitlog/${details}`);
-  const exerciseDetails = await res.json();
+  let exerciseDetails: ExerciseType | null = null;
+
+  try {
+    const res = await fetch(
+      `https://api.api-store.workers.dev/api/fitlog/${details}`,
+    );
+
+    if (res.ok) {
+      exerciseDetails = (await res.json()) as ExerciseType;
+    }
+  } catch (error) {
+    exerciseDetails = null;
+  }
+
+  const resolvedExercise =
+    exerciseDetails ?? getFallbackExerciseById(details) ?? EXERCISE_FALLBACK[0];
 
   const {
     image,
@@ -34,7 +62,7 @@ const DetailsPage = async ({
     rating,
     description,
     instructions,
-  } = exerciseDetails;
+  } = resolvedExercise;
 
   return (
     <div className="container mx-auto flex lg:flex-row flex-col lg:px-0 px-4 mt-12 gap-[56] mb-28">

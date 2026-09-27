@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 const Hero = () => {
   return (
@@ -17,9 +18,10 @@ const Hero = () => {
         </p>
         <Link
           href="#library"
-          className="bg-[#c2f800FF] font-bold text-xs mx-auto px-[28px] py-[18px] text-center block lg:inline-block rounded-md"
+          className=" bg-[#c2f800FF] font-bold text-xs mx-auto px-[28px] py-[18px] text-center block lg:inline-block rounded-md"
         >
           BROWSE WORKOUTS
+          <FaArrowRightLong className="inline-block ms-1" />
         </Link>
       </div>
       <div className="lg:w-1/2 mb-4 lg:mb-0">

@@ -1,11 +1,12 @@
 "use client";
 
 import { exerciseContextProvider } from "@/app/Context/ExerciseContext";
+import { ExerciseType } from "@/app/Type/exerciseType";
 import { useContext } from "react";
 import { MdCheckBoxOutlineBlank } from "react-icons/md";
 import { toast } from "react-toastify";
 
-const TodayPlan = ({ planExercise }) => {
+const TodayPlan = ({ planExercise }: { planExercise: ExerciseType }) => {
   const { addPlan, setAddPlan } = useContext(exerciseContextProvider);
 
   const handleplan = () => {

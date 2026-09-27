@@ -11,7 +11,13 @@ const TodayPlan = () => {
 
   return (
     <div>
-      <Suspense fallback={<h1> Looding.... </h1>}>
+      <Suspense
+        fallback={
+          <h3 className="w-full h-full flex items-center justify-center">
+            Loading workouts…
+          </h3>
+        }
+      >
         {addPlan.length > 0 ? (
           addPlan.map((item: ExerciseType, index: number) => (
             <PlanCard key={index} visivility="inline-block" item={item} />

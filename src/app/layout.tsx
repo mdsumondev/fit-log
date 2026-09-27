@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Oswald } from "next/font/google";
 import { ToastContainer } from "react-toastify";
+import Footer from "./Components/Footer";
 import Header from "./Components/Header";
 import ExerciseContext from "./Context/ExerciseContext";
 import "./globals.css";
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <ToastContainer />
           <Header />
           <div>{children}</div>
+          <Footer />
         </ExerciseContext>
       </body>
     </html>
